@@ -1,0 +1,148 @@
+﻿@using FullHouseWebsite.Models
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.PagedList<House>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+
+<link href="~/Content/template/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/template/css/magnific-popup.css">
+<link rel="stylesheet" href="~/Content/template/css/jquery-ui.css">
+<link rel="stylesheet" href="~/Content/template/css/owl.carousel.min.css">
+<link rel="stylesheet" href="~/Content/template/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="~/Content/template/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="~/Content/template/css/mediaelementplayer.css">
+<link rel="stylesheet" href="~/Content/template/css/animate.css">
+<link rel="stylesheet" href="~/Content/template/fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="~/Content/template/css/fl-bigmug-line.css">
+
+<link rel="stylesheet" href="~/Content/template/css/aos.css">
+
+<link rel="stylesheet" href="~/Content/template/css/style.css">
+@{
+    /**/
+
+    ViewBag.Title = "ShowHouseAndImageByDistrict";
+    Layout = "~/Views/Layout/FullHouseLayout.cshtml";
+}
+
+
+<div class="site-section site-section-sm">
+    <div class="container">
+        <div class="row mb-5">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <a href="@Url.Action("ViewDetailAndImage","House",new {@houseID = item.house.houseID})" class="prop-entry d-block">
+                        <figure>
+                            <img src="@Url.Content("~/Content/image/"+((tbl_Image)item.listImage[0]).url)" alt="Image" class="img-fluid">
+                        </figure>
+                        <div class="prop-text">
+                            <div class="inner">
+                                <span class="price rounded">@string.Format("{0:#,0}", @item.house.price) VND</span>
+                                <h3 class="title">@item.house.houseNumber, @item.house.houseStreet</h3>
+                                <p class="location">@ViewBag.InforDistrict, Hồ Chí Minh</p>
+                            </div>
+                            <div class="prop-more-info">
+                                <div class="inner d-flex">
+                                    <div class="col">
+                                        <span>Area:</span>
+                                        <strong>@item.house.acreage m<sup>2</sup></strong>
+                                    </div>
+                                    <div class="col">
+                                        <span>Phòng:</span>
+                                        <strong>@item.house.roomNumber</strong>
+                                    </div>
+                                    <div class="col">
+                                        <span>Tầng:</span>
+                                        <strong>@item.house.floor</strong>
+                                    </div>
+                                    <div class="col">
+                                        <span>Nội thất:</span>
+                                        @if (item.house.furniture == true)
+                                        {
+                                            <strong>Có</strong>
+                                        }
+                                        else
+                                        {
+                                            <strong>Không</strong>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+
+
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="site-pagination">
+                    @Html.PagedListPager(Model, page => Url.Action("ShowHouseAndImageByDistrict", "House", new { districtID = ((House)Model[0]).districtID, page = page }))
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+<style>
+    .site-pagination {
+        left: auto;
+
+    }
+
+    .img-fluid {
+        width: 340px !important;
+        height: 250px !important;
+    }
+
+    .prop-entry .prop-text .price {
+        background: #4fbfa8 !important;
+    }
+
+    .prop-more-info {
+        background: #4fbfa8 !important;
+    }
+
+    .site-pagination li.active a {
+        background: #4fbfa8 !important;
+        color: white;
+        font-size: 14px;
+    }
+    .site-section site-section-sm bg-light {
+        background-color: #f0f0f0 !important;
+    }
+    .body-content{
+        display: block;
+    }
+</style>
+
+<script src="~/Content/template/js/jquery-3.3.1.min.js"></script>
+<script src="~/Content/template/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="~/Content/template/js/jquery-ui.js"></script>
+<script src="~/Content/template/js/popper.min.js"></script>
+<script src="~/Content/template/js/bootstrap.min.js"></script>
+<script src="~/Content/template/js/owl.carousel.min.js"></script>
+<script src="~/Content/template/js/mediaelement-and-player.min.js"></script>
+<script src="~/Content/template/js/jquery.stellar.min.js"></script>
+<script src="~/Content/template/js/jquery.countdown.min.js"></script>
+<script src="~/Content/template/js/jquery.magnific-popup.min.js"></script>
+<script src="~/Content/template/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/template/js/aos.js"></script>
+
+<script src="~/Content/template/js/main.js"></script>
+
+
+
+
+
+

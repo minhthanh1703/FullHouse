@@ -1,0 +1,423 @@
+*, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+}
+.body-color{
+    background-color: #f0f0f0;
+    display: block;
+    height: auto;
+    border-top: 2px solid rgba(34, 36, 38, 0.15);
+}
+#top-login{
+    background-color: #555555;
+    height: 40px;  
+}
+#top-login a{
+    color: #eee;      
+}
+#link-login{
+    padding-right: 30px;
+    padding-top: 10px;
+}
+#link-login a{
+    padding-right: 25px;
+    text-decoration: none;
+    float: right;
+}
+#link-login a:hover{
+  color: #4fbfa8;
+}
+.top-logo{   
+    background-color: white !important; 
+    padding-left: 100px;
+}
+.navbar-center-li{
+    margin: auto;
+}
+select#districtID.form-comtrol.dropdown-quan {
+    height: 30px;
+    border: 1px solid #4fbfa8 !important;
+    border-radius: 7%;
+    margin-top: 20px;
+}
+
+select.dropdown-quan {
+    margin-top: 12px;
+    color: #495057 !important;
+    display:inline-block;
+    height: 30px !important;
+}
+
+    select.dropdown-quan option {
+        background-color: #eee;
+        color: #495057 !important;
+        text-align: center;
+        border: #495057 !important;
+    }
+
+    select.dropdown-quan:hover {
+        color: #eee !important;
+        background-color: #4fbfa8 !important;
+        border: 1px solid #4fbfa8 !important;
+    }
+
+select#areaID.form-comtrol.dropdown-phuong {
+    height: 30px;
+    width: 65px !important;
+    border: 1px solid #4fbfa8 !important;
+    border-radius: 7%;
+    text-align: center;
+}
+
+select.dropdown-phuong {
+    width: auto !important;
+    color: #495057 !important;
+    margin-top: 12px;
+    display: inline-block;
+    height: 30px !important;
+    
+}
+
+    select.dropdown-phuong option {
+        background-color: #eee;
+        color: #495057 !important;
+        border: #495057 !important;
+    }
+
+    select.dropdown-phuong:hover {
+        color: #eee !important;
+        background-color: #4fbfa8 !important;
+        border: 1px solid #4fbfa8 !important;
+    }
+
+.link-magic{
+    height: 10px;
+    width: 30px;
+    border: 1px solid white;
+    border-radius: 7%;
+    text-align: center;
+    color: white;
+}
+.link-magic1 {
+    height: 10px;
+    width: 50px;
+    border: 1px solid white;
+    border-radius: 7%;
+    text-align: center;
+    color: white;
+}
+.move-form{
+    padding-right: 50px;
+    display:inline-block !important;
+}
+.move-input {
+    display: inline-block !important;
+    height:30px !important;
+}
+form.form-beginform{
+   width: 400px !important;
+}
+.search-button {
+    border: 1px solid #4fbfa8 !important;
+    border-radius: 7%;
+    color: #eee !important;
+    height: 35px;
+    margin-top: 5px;
+    width: 90px;
+    background-color: #4fbfa8 !important;
+}
+.search-button-character{
+    float: left;
+    padding-top: 2px;
+}
+.search-button:hover{
+    color: #eee !important;
+    background-color: #41b39c !important;
+}
+.banner-image-position{
+  padding-top: 30px;
+}
+ .body-content{
+     display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding-bottom: 50px;
+    padding-top: 10px;
+ }
+ .content{
+     display: inline-block;    
+     margin: 30px 10px 10px 20px;
+     text-align: center;
+ }
+
+.button-content{
+    width: 80px;
+    height: 30px;
+    background-color: #4fbfa8 !important; 
+    color: #eee !important;
+}
+.button-content:hover{
+    background-color: #41b39c !important;
+}
+.magic-content{
+    height: 30px;
+    color: #f0f0f0;
+    
+}
+.footer-content{
+    background-color: #e0e0e0;
+    color: #555555 !important;
+}
+.footer-content a{
+    color: #555555 !important;
+}
+.footer-content .icon-footer a{
+    margin: 5px 15px 0 0;
+    color: #fff;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    line-height: 23px;
+    font-size: 15px;
+    text-align: center;
+    transition: all 0.2s ease-out;
+    vertical-align: bottom;
+    background-color: #eee;
+}
+a{
+    text-decoration: none;
+}
+.facebook:hover {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    background-color: #4460ae !important;
+  }
+.twitter:hover {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    background-color: #3cf !important;
+  }
+.instagram:hover {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    background-color: #cd4378 !important;
+  }
+.gplus:hover {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    background-color: #c21f25 !important;
+  }
+.email:hover {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    background-color: #4a7f45 !important;
+  }
+.fix-image{
+    object-fit: fill !important;
+}
+.fix-width-height-image{
+    height: 509px !important;
+    width: 1110px !important;   
+}
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+  /* district page */
+.district-content img{
+    height: 250px !important;
+    display: inline-block !important;
+}
+.body-content-district{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding-bottom: 50px;
+    padding-top: 20px;
+    max-width: 1100px !important;
+}
+.size-content-district{
+    width: 300px !important;
+    padding-top: 10px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 3%;
+    padding-left: 40px;
+    
+}
+.size-content-district:hover img{
+    border: 2px solid #4fbfa8;
+}
+
+.size-content-district:hover .district-content-hover{
+   display: none;
+}
+.size-icon-left{
+   position: absolute;
+   top: 42%;
+   left: 2%;
+   color: #eee !important;
+   font-size: 25px;
+}
+.size-icon-right{
+    position: absolute;
+    top: 42%;
+    right: 2%;
+    color: #eee !important;
+    font-size: 25px;
+ }
+ .room-price{
+     color: #fff;
+     position: absolute;
+     top: 78%;
+     left: 4%;
+ }
+ .room-price b{
+     display: inline-block;
+ }
+ .currency{
+     padding-left: 5px;
+ }
+ .street-district-city{
+    color: #fff;
+    position: absolute;
+    top: 92%;
+    left: 6%;
+ }
+ .room-size{
+     display: block;
+ }
+
+ /* house details page */
+ .info-phone-number{
+     background-color: #fff;
+     height: 70px;
+     margin-top: 15px;
+     max-width: 800px !important;
+     position: relative;
+     color: #555555 ;
+    
+ }
+ .info-phone-number:hover{
+     border: 2px solid #41b39c;
+     background-color: #f6f6f6f6;
+     transition: all 0.5s ease;
+ }
+ .profile-info{
+     font-size: 50px !important;
+     display: inline-block;
+     position: absolute;
+     top: 15%;
+     left: 22%;
+     color: #555555;
+ }
+ .name-info{
+     text-align: center;
+     padding-bottom: 30px;
+     position: absolute;
+     top: 35%;
+     left: 35%;
+ }
+ .phone-info{
+    text-align: center;
+    padding-bottom: 30px;
+    position: absolute;
+    left: 53%;
+     
+ }
+ .table-house-detail{
+     margin-top: 30px;
+     max-width: 800px !important;
+ }
+ .table-house-detail-th{
+     height: 35px !important;
+     font-size: 13px;
+     color:  #555555 !important;
+    
+ }
+ .table-house-detail-td{
+    height: 35px !important;
+    font-size: 13px;
+    color:  #555555 !important;
+   
+}
+ .table-house-detail{
+    overflow: hidden;
+ }
+ .width-form-details{
+     max-width: 1080px !important;
+ 
+ }
+.title-detail {
+    max-width: 200px !important;
+    margin-right: 10%;   
+    height: 30px !important;
+    
+}
+ .font-size-details{
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+ }
+ .width-form-register{
+     max-width: 700px !important;
+ }
+ .submit-register{
+     float: right;
+     background-color: #4fbfa8 !important;
+     border: none !important;
+     height: 30px !important;
+ }
+ .submit-register:hover{
+    background-color: #41b39c !important;
+    border: none !important;
+ }
+ .submit-register::after{
+     clear: both;
+ }
+.lien-he-ad {
+    max-width: 300px !important;
+    margin-left: 10%;
+    margin-right: 20%;
+}
+    
+.details-ul li{
+     padding-left: 18%;
+     list-style-type: none;
+     padding-top: 10px;
+     overflow: hidden;
+     font-size: 14px !important;
+     color:  #555555 !important;
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+ }
+
+ 
+ 
+ 
+ 

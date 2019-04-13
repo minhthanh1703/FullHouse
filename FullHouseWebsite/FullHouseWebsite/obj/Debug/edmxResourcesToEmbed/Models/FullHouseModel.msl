@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FullHouseModelStoreContainer" CdmEntityContainer="FullHouseEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="FullHouseModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Admin">
+      <EntityTypeMapping TypeName="FullHouseModel.tbl_Admin">
+        <MappingFragment StoreEntitySet="tbl_Admin">
+          <ScalarProperty Name="emailAdmin" ColumnName="emailAdmin" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="bankNumber" ColumnName="bankNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Area">
+      <EntityTypeMapping TypeName="FullHouseModel.tbl_Area">
+        <MappingFragment StoreEntitySet="tbl_Area">
+          <ScalarProperty Name="areaID" ColumnName="areaID" />
+          <ScalarProperty Name="areaName" ColumnName="areaName" />
+          <ScalarProperty Name="districtID" ColumnName="districtID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Customer">
+      <EntityTypeMapping TypeName="FullHouseModel.tbl_Customer">
+        <MappingFragment StoreEntitySet="tbl_Customer">
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="customerID" ColumnName="customerID" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="emailCustomer" ColumnName="emailCustomer" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="emailAdmin" ColumnName="emailAdmin" />
+          <ScalarProperty Name="readStatus" ColumnName="readStatus" />
+          <ScalarProperty Name="houseID" ColumnName="houseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_District">
+      <EntityTypeMapping TypeName="FullHouseModel.tbl_District">
+        <MappingFragment StoreEntitySet="tbl_District">
+          <ScalarProperty Name="districtID" ColumnName="districtID" />
+          <ScalarProperty Name="districtName" ColumnName="districtName" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="details" ColumnName="details" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_House">
+      <EntityTypeMapping TypeName="FullHouseModel.tbl_House">
+        <MappingFragment StoreEntitySet="tbl_House">
+          <ScalarProperty Name="houseID" ColumnName="houseID" />
+          <ScalarProperty Name="emailAdmin" ColumnName="emailAdmin" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+          <ScalarProperty Name="furniture" ColumnName="furniture" />
+          <ScalarProperty Name="acreage" ColumnName="acreage" />
+          <ScalarProperty Name="floor" ColumnName="floor" />
+          <ScalarProperty Name="rentStatus" ColumnName="rentStatus" />
+          <ScalarProperty Name="areaID" ColumnName="areaID" />
+          <ScalarProperty Name="houseNumber" ColumnName="houseNumber" />
+          <ScalarProperty Name="houseStreet" ColumnName="houseStreet" />
+          <ScalarProperty Name="otherDetails" ColumnName="otherDetails" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Image">
+      <EntityTypeMapping TypeName="FullHouseModel.tbl_Image">
+        <MappingFragment StoreEntitySet="tbl_Image">
+          <ScalarProperty Name="imageID" ColumnName="imageID" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="houseID" ColumnName="houseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="search_District_Area" FunctionName="FullHouseModel.Store.search_District_Area">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FullHouseModel.search_District_Area_Result">
+          <ScalarProperty Name="districtName" ColumnName="districtName" />
+          <ScalarProperty Name="areaName" ColumnName="areaName" />
+          <ScalarProperty Name="houseID" ColumnName="houseID" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+          <ScalarProperty Name="acreage" ColumnName="acreage" />
+          <ScalarProperty Name="houseStreet" ColumnName="houseStreet" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="search_District_Area_Price" FunctionName="FullHouseModel.Store.search_District_Area_Price">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FullHouseModel.search_District_Area_Price_Result">
+          <ScalarProperty Name="districtName" ColumnName="districtName" />
+          <ScalarProperty Name="areaName" ColumnName="areaName" />
+          <ScalarProperty Name="houseID" ColumnName="houseID" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+          <ScalarProperty Name="acreage" ColumnName="acreage" />
+          <ScalarProperty Name="houseStreet" ColumnName="houseStreet" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="search_District_Area_PriceFrom" FunctionName="FullHouseModel.Store.search_District_Area_PriceFrom">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FullHouseModel.search_District_Area_PriceFrom_Result">
+          <ScalarProperty Name="districtName" ColumnName="districtName" />
+          <ScalarProperty Name="areaName" ColumnName="areaName" />
+          <ScalarProperty Name="houseID" ColumnName="houseID" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+          <ScalarProperty Name="acreage" ColumnName="acreage" />
+          <ScalarProperty Name="houseStreet" ColumnName="houseStreet" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="search_District_Area_PriceTo" FunctionName="FullHouseModel.Store.search_District_Area_PriceTo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FullHouseModel.search_District_Area_PriceTo_Result">
+          <ScalarProperty Name="districtName" ColumnName="districtName" />
+          <ScalarProperty Name="areaName" ColumnName="areaName" />
+          <ScalarProperty Name="houseID" ColumnName="houseID" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+          <ScalarProperty Name="acreage" ColumnName="acreage" />
+          <ScalarProperty Name="houseStreet" ColumnName="houseStreet" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="search_Price" FunctionName="FullHouseModel.Store.search_Price">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FullHouseModel.search_Price_Result">
+          <ScalarProperty Name="districtName" ColumnName="districtName" />
+          <ScalarProperty Name="areaName" ColumnName="areaName" />
+          <ScalarProperty Name="houseID" ColumnName="houseID" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+          <ScalarProperty Name="acreage" ColumnName="acreage" />
+          <ScalarProperty Name="houseStreet" ColumnName="houseStreet" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="search_PriceFrom" FunctionName="FullHouseModel.Store.search_PriceFrom">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FullHouseModel.search_PriceFrom_Result">
+          <ScalarProperty Name="districtName" ColumnName="districtName" />
+          <ScalarProperty Name="areaName" ColumnName="areaName" />
+          <ScalarProperty Name="houseID" ColumnName="houseID" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+          <ScalarProperty Name="acreage" ColumnName="acreage" />
+          <ScalarProperty Name="houseStreet" ColumnName="houseStreet" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="search_PriceTo" FunctionName="FullHouseModel.Store.search_PriceTo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FullHouseModel.search_PriceTo_Result">
+          <ScalarProperty Name="districtName" ColumnName="districtName" />
+          <ScalarProperty Name="areaName" ColumnName="areaName" />
+          <ScalarProperty Name="houseID" ColumnName="houseID" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+          <ScalarProperty Name="acreage" ColumnName="acreage" />
+          <ScalarProperty Name="houseStreet" ColumnName="houseStreet" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="FullHouseModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="FullHouseModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="FullHouseModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="FullHouseModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FullHouseModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="FullHouseModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FullHouseModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="FullHouseModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="FullHouseModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

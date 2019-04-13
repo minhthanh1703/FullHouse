@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FullHouseModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tbl_Admin">
+    <Key>
+      <PropertyRef Name="emailAdmin" />
+    </Key>
+    <Property Name="emailAdmin" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+    <Property Name="fullname" Type="nvarchar" MaxLength="50" />
+    <Property Name="phoneNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="bankNumber" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Area">
+    <Key>
+      <PropertyRef Name="areaID" />
+    </Key>
+    <Property Name="areaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="areaName" Type="nvarchar" MaxLength="50" />
+    <Property Name="districtID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Customer">
+    <Key>
+      <PropertyRef Name="customerID" />
+    </Key>
+    <Property Name="customerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fullname" Type="nvarchar" MaxLength="50" />
+    <Property Name="phoneNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="emailCustomer" Type="nvarchar" MaxLength="50" />
+    <Property Name="message" Type="nvarchar(max)" />
+    <Property Name="emailAdmin" Type="nvarchar" MaxLength="50" />
+    <Property Name="readStatus" Type="bit" />
+    <Property Name="houseID" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_District">
+    <Key>
+      <PropertyRef Name="districtID" />
+    </Key>
+    <Property Name="districtID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="districtName" Type="nvarchar" MaxLength="50" />
+    <Property Name="image" Type="nvarchar" MaxLength="100" />
+    <Property Name="details" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tbl_House">
+    <Key>
+      <PropertyRef Name="houseID" />
+    </Key>
+    <Property Name="houseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emailAdmin" Type="nvarchar" MaxLength="50" />
+    <Property Name="price" Type="float" />
+    <Property Name="roomNumber" Type="int" />
+    <Property Name="furniture" Type="bit" />
+    <Property Name="acreage" Type="float" />
+    <Property Name="floor" Type="int" />
+    <Property Name="rentStatus" Type="bit" />
+    <Property Name="areaID" Type="int" />
+    <Property Name="houseNumber" Type="nvarchar" MaxLength="10" />
+    <Property Name="houseStreet" Type="nvarchar" MaxLength="20" />
+    <Property Name="otherDetails" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tbl_Image">
+    <Key>
+      <PropertyRef Name="imageID" />
+    </Key>
+    <Property Name="imageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="url" Type="nvarchar" MaxLength="50" />
+    <Property Name="houseID" Type="int" />
+  </EntityType>
+  <Association Name="FK_tbl_Area_tbl_District">
+    <End Role="tbl_District" Type="Self.tbl_District" Multiplicity="0..1" />
+    <End Role="tbl_Area" Type="Self.tbl_Area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_District">
+        <PropertyRef Name="districtID" />
+      </Principal>
+      <Dependent Role="tbl_Area">
+        <PropertyRef Name="districtID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Customer_tbl_Admin">
+    <End Role="tbl_Admin" Type="Self.tbl_Admin" Multiplicity="0..1" />
+    <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Admin">
+        <PropertyRef Name="emailAdmin" />
+      </Principal>
+      <Dependent Role="tbl_Customer">
+        <PropertyRef Name="emailAdmin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_House_tbl_Admin">
+    <End Role="tbl_Admin" Type="Self.tbl_Admin" Multiplicity="0..1" />
+    <End Role="tbl_House" Type="Self.tbl_House" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Admin">
+        <PropertyRef Name="emailAdmin" />
+      </Principal>
+      <Dependent Role="tbl_House">
+        <PropertyRef Name="emailAdmin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_House_tbl_Area">
+    <End Role="tbl_Area" Type="Self.tbl_Area" Multiplicity="0..1" />
+    <End Role="tbl_House" Type="Self.tbl_House" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Area">
+        <PropertyRef Name="areaID" />
+      </Principal>
+      <Dependent Role="tbl_House">
+        <PropertyRef Name="areaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Image_tbl_House">
+    <End Role="tbl_House" Type="Self.tbl_House" Multiplicity="0..1" />
+    <End Role="tbl_Image" Type="Self.tbl_Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_House">
+        <PropertyRef Name="houseID" />
+      </Principal>
+      <Dependent Role="tbl_Image">
+        <PropertyRef Name="houseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FullHouseModel1StoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Admin" EntityType="Self.tbl_Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Area" EntityType="Self.tbl_Area" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Customer" EntityType="Self.tbl_Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_District" EntityType="Self.tbl_District" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_House" EntityType="Self.tbl_House" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Image" EntityType="Self.tbl_Image" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tbl_Area_tbl_District" Association="Self.FK_tbl_Area_tbl_District">
+      <End Role="tbl_District" EntitySet="tbl_District" />
+      <End Role="tbl_Area" EntitySet="tbl_Area" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Customer_tbl_Admin" Association="Self.FK_tbl_Customer_tbl_Admin">
+      <End Role="tbl_Admin" EntitySet="tbl_Admin" />
+      <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_House_tbl_Admin" Association="Self.FK_tbl_House_tbl_Admin">
+      <End Role="tbl_Admin" EntitySet="tbl_Admin" />
+      <End Role="tbl_House" EntitySet="tbl_House" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_House_tbl_Area" Association="Self.FK_tbl_House_tbl_Area">
+      <End Role="tbl_Area" EntitySet="tbl_Area" />
+      <End Role="tbl_House" EntitySet="tbl_House" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Image_tbl_House" Association="Self.FK_tbl_Image_tbl_House">
+      <End Role="tbl_House" EntitySet="tbl_House" />
+      <End Role="tbl_Image" EntitySet="tbl_Image" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

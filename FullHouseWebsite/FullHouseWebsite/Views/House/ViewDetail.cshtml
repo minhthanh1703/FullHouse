@@ -1,0 +1,120 @@
+﻿@using FullHouseWebsite.Models
+@model tbl_House
+
+<link href="~/Content/mycss/cssBootstrap.css" rel="stylesheet" />
+<!-- Bootstrap CSS -->
+<link href="~/Content/mycss/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+@{
+    ViewBag.Title = "ViewDetail";
+    Layout = "~/Views/Layout/FullHouseLayout.cshtml";
+}
+
+@Html.Action("ImageDetailsPartial","House",new {@houseID = Model.houseID})
+
+@*form info admin*@
+<div class="info-phone-number container rounded-pill col-12 col-md-12">
+    <i class="far fa-user-circle profile-info"></i>
+    <p class="h4 name-info">@ViewBag.InfoAdmin</p>
+    <br>
+
+
+</div>
+
+@*form content*@
+<table class="table table-striped table-hover container table-house-detail">
+    <tbody class="table-house-detail-tbody">
+        <tr>
+            <th scope="row" class="table-house-detail-th">Gía thuê</th>
+            <td class="table-house-detail-td">@Model.price VND/ tháng</td>
+        </tr>
+        <tr>
+            <th scope="row" class="table-house-detail-th">Diện tích</th>
+            <td class="table-house-detail-td">@Model.acreage m2</td>
+        </tr>
+        <tr>
+            <th scope="row" class="table-house-detail-th">Số phòng</th>
+            <td class="table-house-detail-td">@Model.roomNumber Phòng</td>
+        </tr>
+        <tr>
+            <th scope="row" class="table-house-detail-th">Số tầng</th>
+            <td class="table-house-detail-td">@Model.floor</td>
+        </tr>
+        <tr>
+            <th scope="row" class="table-house-detail-th">Số nhà</th>
+            <td class="table-house-detail-td">@Model.houseNumber - @Model.houseStreet</td>
+        </tr>
+        <tr>
+            <th scope="row" class="table-house-detail-th">Phường</th>
+            <td class="table-house-detail-td">Tân Chánh Hiệp</td>
+        </tr>
+        <tr>
+            <th scope="row" class="table-house-detail-th">Quận</th>
+            <td class="table-house-detail-td">Quận 12</td>
+        </tr>
+
+        <tr>
+            <th scope="row" class="table-house-detail-th">Nội thất</th>
+            @{
+                if (Model.furniture == true)
+                {
+                    <td class="table-house-detail-td">Có</td>
+                }
+                else
+                {
+                    <td class="table-house-detail-td">Không</td>
+                }
+
+            }
+        </tr>
+
+    </tbody>
+</table>
+<br>
+<br>
+
+@*form details*@
+<p class="title-detail col-12 col-md-12 h3">Chi Tiết</p>
+<div class="container width-form-details">
+
+    <br>
+
+    <ul class="details-ul">
+        @{
+            string[] details = Model.otherDetails.Split(';');
+            foreach (var item in details)
+            {
+                <li>
+                    - @item.ToString()
+                </li>
+            }
+        }
+
+    </ul>
+</div>
+<br>
+<br>
+<p class="lien-he-ad h4 col-12 col-md-12">LIÊN LẠC NGƯỜI QUẢNG CÁO!</p>
+<script src="~/Scripts/myScipts/jquery-3.3.1.slim.min.js"></script>
+<script src="~/Scripts/myScipts/popper.min.js"></script>
+<script src="~/Scripts/myScipts/bootstrap.min.js"></script>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>

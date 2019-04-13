@@ -1,0 +1,227 @@
+﻿@using FullHouseWebsite.Models
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/Content/mycss/cssBootstrap.css" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link href="~/Content/mycss/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <title>Home Page</title>
+</head>
+<body>
+    <!-- form đăng kí -->
+
+    @{
+        if ((Session["Admin"] == null) || (Session["Admin"].ToString() == ""))
+        {
+            <div id="top-login" class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 col-12" id="link-login">
+                        <a href="@Url.Action("Login", "Login")">Đăng Nhập</a>  <a href="@Url.Action("Register", "Login")">Đăng Kí</a>  <a href="#">Blogs</a>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            tbl_Admin admin = (tbl_Admin)Session["Admin"];
+            <div id="top-login" class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 col-12" id="link-login">
+                        <a href="/Login/EditAdmin">@admin.fullname.ToString()</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+
+    <!-- form top nav   -->
+    <div class="container height-top-nav">
+        <nav class="navbar navbar-expand-lg navbar-light top-logo">
+            <a class="navbar-brand" href="/Home">
+                <img src="@Url.Content("~/Content/image/home_image.jpg")" alt="" class="img-responsive" width="100" height="100">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            @Html.Action("GetAllDistrict", "House")
+
+
+        </nav>
+
+    </div>
+
+    <!-- form banner -->
+
+    <div class="container-fluid body-color banner-image-position">
+        @RenderSection("Banner", false)
+
+
+        <!-- form content -->
+
+        <div class="container body-content">
+            @RenderBody()
+
+
+        </div>
+    </div>
+    <!-- footer form -->
+
+    <footer class="page-footer font-small mdb-color pt-4 footer-content">
+
+
+        <div class="container text-center text-md-left">
+
+
+            <div class="row text-center text-md-left mt-3 pb-3">
+
+
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Full House</h6>
+                    <p>
+                        Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur
+                        adipisicing elit.
+                    </p>
+                </div>
+
+
+                <hr class="w-100 clearfix d-md-none">
+
+
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Điều khoản</h6>
+                    <p>
+                        <a href="#!">Điều khoản thỏa thuận</a>
+                    </p>
+                    <p>
+                        <a href="#!">Quy chế hoạt động</a>
+                    </p>
+                    <p>
+                        <a href="#!">Quy định đăng tin</a>
+                    </p>
+                    <p>
+                        <a href="#!">Hướng dẫn - đăng tin</a>
+                    </p>
+                </div>
+
+
+                <hr class="w-100 clearfix d-md-none">
+
+
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Tài khoản</h6>
+                    <p>
+                        <a href="#!">Tài khoản</a>
+                    </p>
+                    <p>
+                        <a href="#!">Trở thành đối tác</a>
+                    </p>
+                    <p>
+                        <a href="#!">Thông tin tài khoản</a>
+                    </p>
+                    <p>
+                        <a href="#!">Trợ giúp</a>
+                    </p>
+                </div>
+
+
+                <hr class="w-100 clearfix d-md-none">
+
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Liên hệ</h6>
+                    <p>
+                        <i class="fas fa-home mr-3"></i> Quận 12, Quang Trung, Tô Ký
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope mr-3"></i> duyddse62881@fpt.edu.vn
+                    </p>
+                    <p>
+                        <i class="fas fa-phone mr-3"></i> + 038 4122 720
+                    </p>
+                    <p>
+                        <i class="fas fa-print mr-3"></i> + 038 4122 720
+                    </p>
+                </div>
+
+
+            </div>
+
+
+            <hr>
+
+
+            <div class="row d-flex align-items-center">
+
+                <div class="col-md-7 col-lg-8">
+
+
+                    <p class="text-center text-md-left">
+                        <img src="house.png" alt="" height="15" width="15"> FullHouse công cụ tìm kiếm hàng đầu Việt Nam về lĩnh vực cho thuê nhà ở © 2017-2019 FullHouse.
+                    </p>
+
+                </div>
+
+
+
+                <div class="col-md-5 col-lg-4 ml-lg-0">
+
+
+                    <div class="text-center text-md-right icon-footer">
+                        <ul class="list-unstyled list-inline">
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-sm rgba-white-slight mx-1 facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-sm rgba-white-slight mx-1 twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-sm rgba-white-slight mx-1 instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-sm rgba-white-slight mx-1 gplus">
+                                    <i class="fab fa-google-plus-g"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-sm rgba-white-slight mx-1 email">
+                                    <i class="far fa-envelope"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+    </footer>
+    <!-- Footer -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/myScipts/popper.min.js"></script>
+    <script src="~/Scripts/myScipts/bootstrap.min.js"></script>
+
+</body>
+</html>

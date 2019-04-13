@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FullHouseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tbl_Admin">
+    <Key>
+      <PropertyRef Name="emailAdmin" />
+    </Key>
+    <Property Name="emailAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="phoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="bankNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Customer" Relationship="Self.FK_tbl_Customer_tbl_Admin" FromRole="tbl_Admin" ToRole="tbl_Customer" />
+    <NavigationProperty Name="tbl_House" Relationship="Self.FK_tbl_House_tbl_Admin" FromRole="tbl_Admin" ToRole="tbl_House" />
+  </EntityType>
+  <EntityType Name="tbl_Area">
+    <Key>
+      <PropertyRef Name="areaID" />
+    </Key>
+    <Property Name="areaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="areaName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="districtID" Type="Int32" />
+    <NavigationProperty Name="tbl_District" Relationship="Self.FK_tbl_Area_tbl_District" FromRole="tbl_Area" ToRole="tbl_District" />
+    <NavigationProperty Name="tbl_House" Relationship="Self.FK_tbl_House_tbl_Area" FromRole="tbl_Area" ToRole="tbl_House" />
+  </EntityType>
+  <EntityType Name="tbl_Customer">
+    <Key>
+      <PropertyRef Name="customerID" />
+    </Key>
+    <Property Name="customerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="phoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="emailCustomer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="emailAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="readStatus" Type="Boolean" Nullable="false" />
+    <Property Name="houseID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tbl_Admin" Relationship="Self.FK_tbl_Customer_tbl_Admin" FromRole="tbl_Customer" ToRole="tbl_Admin" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="tbl_District">
+    <Key>
+      <PropertyRef Name="districtID" />
+    </Key>
+    <Property Name="districtID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="districtName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Area" Relationship="Self.FK_tbl_Area_tbl_District" FromRole="tbl_District" ToRole="tbl_Area" />
+  </EntityType>
+  <EntityType Name="tbl_House">
+    <Key>
+      <PropertyRef Name="houseID" />
+    </Key>
+    <Property Name="houseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emailAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Double" />
+    <Property Name="roomNumber" Type="Int32" />
+    <Property Name="furniture" Type="Boolean" />
+    <Property Name="acreage" Type="Double" />
+    <Property Name="floor" Type="Int32" />
+    <Property Name="rentStatus" Type="Boolean" />
+    <Property Name="areaID" Type="Int32" />
+    <Property Name="houseNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="houseStreet" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="otherDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Admin" Relationship="Self.FK_tbl_House_tbl_Admin" FromRole="tbl_House" ToRole="tbl_Admin" />
+    <NavigationProperty Name="tbl_Area" Relationship="Self.FK_tbl_House_tbl_Area" FromRole="tbl_House" ToRole="tbl_Area" />
+    <NavigationProperty Name="tbl_Image" Relationship="Self.FK_tbl_Image_tbl_House" FromRole="tbl_House" ToRole="tbl_Image" />
+  </EntityType>
+  <EntityType Name="tbl_Image">
+    <Key>
+      <PropertyRef Name="imageID" />
+    </Key>
+    <Property Name="imageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="houseID" Type="Int32" />
+    <NavigationProperty Name="tbl_House" Relationship="Self.FK_tbl_Image_tbl_House" FromRole="tbl_Image" ToRole="tbl_House" />
+  </EntityType>
+  <Association Name="FK_tbl_Customer_tbl_Admin">
+    <End Role="tbl_Admin" Type="Self.tbl_Admin" Multiplicity="0..1" />
+    <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Admin">
+        <PropertyRef Name="emailAdmin" />
+      </Principal>
+      <Dependent Role="tbl_Customer">
+        <PropertyRef Name="emailAdmin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_House_tbl_Admin">
+    <End Role="tbl_Admin" Type="Self.tbl_Admin" Multiplicity="0..1" />
+    <End Role="tbl_House" Type="Self.tbl_House" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Admin">
+        <PropertyRef Name="emailAdmin" />
+      </Principal>
+      <Dependent Role="tbl_House">
+        <PropertyRef Name="emailAdmin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Area_tbl_District">
+    <End Role="tbl_District" Type="Self.tbl_District" Multiplicity="0..1" />
+    <End Role="tbl_Area" Type="Self.tbl_Area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_District">
+        <PropertyRef Name="districtID" />
+      </Principal>
+      <Dependent Role="tbl_Area">
+        <PropertyRef Name="districtID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_House_tbl_Area">
+    <End Role="tbl_Area" Type="Self.tbl_Area" Multiplicity="0..1" />
+    <End Role="tbl_House" Type="Self.tbl_House" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Area">
+        <PropertyRef Name="areaID" />
+      </Principal>
+      <Dependent Role="tbl_House">
+        <PropertyRef Name="areaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Image_tbl_House">
+    <End Role="tbl_House" Type="Self.tbl_House" Multiplicity="0..1" />
+    <End Role="tbl_Image" Type="Self.tbl_Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_House">
+        <PropertyRef Name="houseID" />
+      </Principal>
+      <Dependent Role="tbl_Image">
+        <PropertyRef Name="houseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FullHouseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="tbl_Admin" EntityType="Self.tbl_Admin" />
+    <EntitySet Name="tbl_Area" EntityType="Self.tbl_Area" />
+    <EntitySet Name="tbl_Customer" EntityType="Self.tbl_Customer" />
+    <EntitySet Name="tbl_District" EntityType="Self.tbl_District" />
+    <EntitySet Name="tbl_House" EntityType="Self.tbl_House" />
+    <EntitySet Name="tbl_Image" EntityType="Self.tbl_Image" />
+    <AssociationSet Name="FK_tbl_Customer_tbl_Admin" Association="Self.FK_tbl_Customer_tbl_Admin">
+      <End Role="tbl_Admin" EntitySet="tbl_Admin" />
+      <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_House_tbl_Admin" Association="Self.FK_tbl_House_tbl_Admin">
+      <End Role="tbl_Admin" EntitySet="tbl_Admin" />
+      <End Role="tbl_House" EntitySet="tbl_House" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Area_tbl_District" Association="Self.FK_tbl_Area_tbl_District">
+      <End Role="tbl_District" EntitySet="tbl_District" />
+      <End Role="tbl_Area" EntitySet="tbl_Area" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_House_tbl_Area" Association="Self.FK_tbl_House_tbl_Area">
+      <End Role="tbl_Area" EntitySet="tbl_Area" />
+      <End Role="tbl_House" EntitySet="tbl_House" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Image_tbl_House" Association="Self.FK_tbl_Image_tbl_House">
+      <End Role="tbl_House" EntitySet="tbl_House" />
+      <End Role="tbl_Image" EntitySet="tbl_Image" />
+    </AssociationSet>
+    <FunctionImport Name="search_District_Area" ReturnType="Collection(FullHouseModel.search_District_Area_Result)">
+      <Parameter Name="districtID" Mode="In" Type="Int32" />
+      <Parameter Name="areaID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="search_District_Area_Price" ReturnType="Collection(FullHouseModel.search_District_Area_Price_Result)">
+      <Parameter Name="districtID" Mode="In" Type="Int32" />
+      <Parameter Name="areaID" Mode="In" Type="Int32" />
+      <Parameter Name="PriceFrom" Mode="In" Type="Double" />
+      <Parameter Name="PriceTo" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="search_District_Area_PriceFrom" ReturnType="Collection(FullHouseModel.search_District_Area_PriceFrom_Result)">
+      <Parameter Name="districtID" Mode="In" Type="Int32" />
+      <Parameter Name="areaID" Mode="In" Type="Int32" />
+      <Parameter Name="PriceFrom" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="search_District_Area_PriceTo" ReturnType="Collection(FullHouseModel.search_District_Area_PriceTo_Result)">
+      <Parameter Name="districtID" Mode="In" Type="Int32" />
+      <Parameter Name="areaID" Mode="In" Type="Int32" />
+      <Parameter Name="PriceTo" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="search_Price" ReturnType="Collection(FullHouseModel.search_Price_Result)">
+      <Parameter Name="PriceFrom" Mode="In" Type="Double" />
+      <Parameter Name="PriceTo" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="search_PriceFrom" ReturnType="Collection(FullHouseModel.search_PriceFrom_Result)">
+      <Parameter Name="PriceFrom" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="search_PriceTo" ReturnType="Collection(FullHouseModel.search_PriceTo_Result)">
+      <Parameter Name="PriceTo" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(FullHouseModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(FullHouseModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="search_District_Area_Result">
+    <Property Type="String" Name="districtName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="areaName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="houseID" Nullable="false" />
+    <Property Type="Double" Name="price" Nullable="true" />
+    <Property Type="Int32" Name="roomNumber" Nullable="true" />
+    <Property Type="Double" Name="acreage" Nullable="true" />
+    <Property Type="String" Name="houseStreet" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="search_District_Area_Price_Result">
+    <Property Type="String" Name="districtName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="areaName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="houseID" Nullable="false" />
+    <Property Type="Double" Name="price" Nullable="true" />
+    <Property Type="Int32" Name="roomNumber" Nullable="true" />
+    <Property Type="Double" Name="acreage" Nullable="true" />
+    <Property Type="String" Name="houseStreet" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="search_District_Area_PriceFrom_Result">
+    <Property Type="String" Name="districtName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="areaName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="houseID" Nullable="false" />
+    <Property Type="Double" Name="price" Nullable="true" />
+    <Property Type="Int32" Name="roomNumber" Nullable="true" />
+    <Property Type="Double" Name="acreage" Nullable="true" />
+    <Property Type="String" Name="houseStreet" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="search_District_Area_PriceTo_Result">
+    <Property Type="String" Name="districtName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="areaName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="houseID" Nullable="false" />
+    <Property Type="Double" Name="price" Nullable="true" />
+    <Property Type="Int32" Name="roomNumber" Nullable="true" />
+    <Property Type="Double" Name="acreage" Nullable="true" />
+    <Property Type="String" Name="houseStreet" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="search_Price_Result">
+    <Property Type="String" Name="districtName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="areaName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="houseID" Nullable="false" />
+    <Property Type="Double" Name="price" Nullable="true" />
+    <Property Type="Int32" Name="roomNumber" Nullable="true" />
+    <Property Type="Double" Name="acreage" Nullable="true" />
+    <Property Type="String" Name="houseStreet" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="search_PriceFrom_Result">
+    <Property Type="String" Name="districtName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="areaName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="houseID" Nullable="false" />
+    <Property Type="Double" Name="price" Nullable="true" />
+    <Property Type="Int32" Name="roomNumber" Nullable="true" />
+    <Property Type="Double" Name="acreage" Nullable="true" />
+    <Property Type="String" Name="houseStreet" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="search_PriceTo_Result">
+    <Property Type="String" Name="districtName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="areaName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="houseID" Nullable="false" />
+    <Property Type="Double" Name="price" Nullable="true" />
+    <Property Type="Int32" Name="roomNumber" Nullable="true" />
+    <Property Type="Double" Name="acreage" Nullable="true" />
+    <Property Type="String" Name="houseStreet" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
